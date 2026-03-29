@@ -19,6 +19,8 @@
             --btn-text: #000;
             --table-th-bg: #1A1A1D;
             --table-super-bg: #111113;
+            --april-color: #5BC0BE; /* 4月大糧專屬亮藍綠色 */
+            --april-bg: rgba(91, 192, 190, 0.1);
         }
 
         /* 主題 1：蒼玄 (Sougen - Navy & Ice) */
@@ -34,6 +36,8 @@
             --btn-text: #FFF;
             --table-th-bg: #182333;
             --table-super-bg: #0E1622;
+            --april-color: #F2C94C;
+            --april-bg: rgba(242, 201, 76, 0.1);
         }
 
         /* 主題 2：利休 (Rikyu - Mocha & Sand) */
@@ -49,6 +53,8 @@
             --btn-text: #141311;
             --table-th-bg: #26231E;
             --table-super-bg: #1A1815;
+            --april-color: #A3B18A;
+            --april-bg: rgba(163, 177, 138, 0.1);
         }
 
         /* 主題 3：撫子 (Nadeshiko - Plum & Rose Gold) */
@@ -64,6 +70,8 @@
             --btn-text: #171214;
             --table-th-bg: #2B1F25;
             --table-super-bg: #1E161A;
+            --april-color: #E29578;
+            --april-bg: rgba(226, 149, 120, 0.1);
         }
 
         /* --- 基礎排版 CSS --- */
@@ -78,7 +86,6 @@
             transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        /* 頂部控制欄 */
         .top-bar {
             display: flex;
             justify-content: flex-end;
@@ -99,11 +106,7 @@
             transition: all 0.3s;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
+        .header { text-align: center; margin-bottom: 30px; }
         .header h1 {
             color: var(--accent-gold);
             font-size: 2rem;
@@ -113,13 +116,7 @@
             text-transform: uppercase;
             transition: color 0.4s ease;
         }
-
-        .header p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin: 0;
-            letter-spacing: 2px;
-        }
+        .header p { color: var(--text-muted); font-size: 0.85rem; margin: 0; letter-spacing: 2px; }
 
         .card {
             background: var(--bg-card);
@@ -139,167 +136,81 @@
             display: flex;
             align-items: center;
         }
-
         .section-title::before {
-            content: '';
-            display: inline-block;
-            width: 4px;
-            height: 16px;
-            background-color: var(--accent-gold);
-            margin-right: 10px;
-            border-radius: 2px;
-            transition: background-color 0.4s;
+            content: ''; display: inline-block; width: 4px; height: 16px;
+            background-color: var(--accent-gold); margin-right: 10px; border-radius: 2px;
         }
 
         .form-group { margin-bottom: 20px; }
-
-        label {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
+        label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 8px; }
 
         select:not(.theme-select), input {
-            width: 100%;
-            background-color: var(--bg-base);
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-            border-radius: 10px;
-            padding: 14px 16px;
-            font-size: 1rem;
-            box-sizing: border-box;
-            appearance: none;
-            transition: all 0.3s ease;
+            width: 100%; background-color: var(--bg-base); color: var(--text-main);
+            border: 1px solid var(--border-color); border-radius: 10px; padding: 14px 16px;
+            font-size: 1rem; box-sizing: border-box; appearance: none; transition: all 0.3s ease;
         }
-
         select:not(.theme-select):focus, input:focus {
-            outline: none;
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 0 2px var(--accent-gold-dim);
+            outline: none; border-color: var(--accent-gold); box-shadow: 0 0 0 2px var(--accent-gold-dim);
         }
 
         .select-wrapper { position: relative; }
         .select-wrapper::after {
-            content: '▼';
-            font-size: 0.8rem;
-            color: var(--accent-gold);
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            pointer-events: none;
+            content: '▼'; font-size: 0.8rem; color: var(--accent-gold);
+            position: absolute; right: 16px; top: 50%; transform: translateY(-50%); pointer-events: none;
         }
 
         .btn-calc {
-            width: 100%;
-            background: var(--btn-grad);
-            color: var(--btn-text);
-            border: none;
-            padding: 16px;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s;
+            width: 100%; background: var(--btn-grad); color: var(--btn-text);
+            border: none; padding: 16px; border-radius: 10px; font-size: 1.1rem;
+            font-weight: 600; letter-spacing: 1px; margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); transition: all 0.3s;
         }
-
         .btn-calc:active { transform: scale(0.98); }
 
         .result-box {
-            display: none;
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px dashed var(--border-color);
+            display: none; margin-top: 25px; padding-top: 20px; border-top: 1px dashed var(--border-color);
         }
 
         .result-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border-color);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 0; border-bottom: 1px solid var(--border-color);
         }
-
         .result-row:last-child { border-bottom: none; }
         .result-label { font-size: 0.9rem; color: var(--text-muted); }
         .result-value { font-size: 1.1rem; color: var(--text-main); font-weight: 500; }
 
         .highlight-row {
-            background-color: var(--accent-gold-dim);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            border: 1px solid var(--accent-gold);
-            transition: all 0.4s;
+            background-color: var(--accent-gold-dim); padding: 15px; border-radius: 8px;
+            margin-top: 15px; border: 1px solid var(--accent-gold); transition: all 0.4s;
         }
-
         .highlight-row .result-label { color: var(--accent-gold); font-weight: bold; }
-        .highlight-row .result-value { font-size: 1.4rem; color: var(--accent-gold); font-weight: bold; }
+        .highlight-row .result-value { font-size: 1.3rem; color: var(--accent-gold); font-weight: bold; }
+
+        /* 4月大糧特別高亮 */
+        .april-row {
+            background-color: var(--april-bg); padding: 18px 15px; border-radius: 8px;
+            margin-top: 10px; border: 1px dashed var(--april-color); transition: all 0.4s;
+        }
+        .april-row .result-label { color: var(--april-color); font-weight: bold; }
+        .april-row .result-value { font-size: 1.5rem; color: var(--april-color); font-weight: bold; }
 
         .table-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-            background: var(--bg-base);
+            width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch;
+            border-radius: 10px; border: 1px solid var(--border-color); background: var(--bg-base);
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 700px;
-            font-size: 0.85rem;
-        }
-
-        th, td {
-            padding: 12px 10px;
-            text-align: right;
-            border-bottom: 1px solid var(--border-color);
-            white-space: nowrap;
-        }
-
-        th {
-            background-color: var(--table-th-bg);
-            color: var(--accent-gold);
-            font-weight: 500;
-            position: sticky;
-            top: 0;
-            transition: background-color 0.4s;
-        }
-
+        table { width: 100%; border-collapse: collapse; min-width: 700px; font-size: 0.85rem; }
+        th, td { padding: 12px 10px; text-align: right; border-bottom: 1px solid var(--border-color); white-space: nowrap; }
+        th { background-color: var(--table-th-bg); color: var(--accent-gold); font-weight: 500; position: sticky; top: 0; }
+        
         .col-grade {
-            position: sticky;
-            left: 0;
-            background-color: var(--table-th-bg);
-            text-align: left;
-            font-weight: bold;
-            color: var(--text-main);
-            border-right: 1px solid var(--border-color);
-            z-index: 2;
+            position: sticky; left: 0; background-color: var(--table-th-bg); text-align: left;
+            font-weight: bold; color: var(--text-main); border-right: 1px solid var(--border-color); z-index: 2;
         }
-
         tr:last-child td { border-bottom: none; }
+        .super-header { text-align: center; border-bottom: 1px solid var(--accent-gold); background-color: var(--table-super-bg); }
+        .sys-msg { color: #FF6B6B; font-size: 0.8rem; margin-top: 10px; text-align: right; }
         
-        .super-header {
-            text-align: center;
-            border-bottom: 1px solid var(--accent-gold);
-            background-color: var(--table-super-bg);
-        }
-        
-        .sys-msg {
-            color: #FF6B6B;
-            font-size: 0.8rem;
-            margin-top: 10px;
-            text-align: right;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -340,11 +251,11 @@
                 <label>評分 (Rating)</label>
                 <div class="select-wrapper">
                     <select id="calcRating">
-                        <option value="1">1 (極佳)</option>
-                        <option value="2">2 (良好)</option>
+                        <option value="5">5 (極佳)</option>
+                        <option value="4">4 (良好)</option>
                         <option value="3" selected>3 (標準)</option>
-                        <option value="4">4 (需改進)</option>
-                        <option value="5">5 (不合格)</option>
+                        <option value="2">2 (需改進)</option>
+                        <option value="1">1 (不合格)</option>
                     </select>
                 </div>
             </div>
@@ -371,8 +282,13 @@
             </div>
             <div id="sysMsg" class="sys-msg"></div>
 
+            <div class="result-row april-row">
+                <span class="result-label">4月發放總額 🤩<br><small style="font-size:0.75rem; opacity:0.8; font-weight:normal;">(4月新底薪 + 年度獎金)</small></span>
+                <span class="result-value" id="resAprilTotal">$0</span>
+            </div>
+
             <div class="result-row highlight-row">
-                <span class="result-label">預測每月實收<br><small style="font-size:0.7rem; opacity:0.7; font-weight:normal;">(已扣 5% MPF 上限 $1500 + 津貼)</small></span>
+                <span class="result-label">平時每月實收<br><small style="font-size:0.7rem; opacity:0.7; font-weight:normal;">(已扣 5% MPF 上限 $1500 + 津貼)</small></span>
                 <span class="result-value" id="resTotalMonth">$0</span>
             </div>
         </div>
@@ -496,6 +412,9 @@
         let totalBonusMonths = ratData.da + ratData.pa + ratData.sa;
         let bonusAmount = currentPaidInput * totalBonusMonths;
 
+        // 計算4月大糧 (新底薪 + 年度總獎金)
+        let aprilTotalPayout = newPaid + bonusAmount;
+
         let mpf = newPaid * 0.05;
         if (mpf > 1500) mpf = 1500;
 
@@ -504,6 +423,9 @@
         document.getElementById("resNewPaid").innerText = "$" + formatMoney(newPaid);
         document.getElementById("resInc").innerText = "$" + formatMoney(increment);
         document.getElementById("resBonus").innerText = "$" + formatMoney(bonusAmount) + ` (${totalBonusMonths.toFixed(2)}m)`;
+        
+        // 更新 UI 顯示
+        document.getElementById("resAprilTotal").innerText = "$" + formatMoney(aprilTotalPayout);
         document.getElementById("resTotalMonth").innerText = "$" + formatMoney(monthlyTakeHome);
         document.getElementById("sysMsg").innerText = sysMsg;
 
